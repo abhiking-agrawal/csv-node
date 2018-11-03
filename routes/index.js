@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router(),
     fileO = require('../controller/fileOperation'),
-    dataOps = require('../controller/dataOperations')
+    dataOps = require('../controller/dataOperation')
 
 // Upload CSV file
 router.route('/upload').post(fileO.fileUpload,fileO.saveToDatabase);
@@ -9,11 +9,11 @@ router.route('/upload').post(fileO.fileUpload,fileO.saveToDatabase);
 // Signup route for a user
 router.route('/data')
         .get(dataOps.getDataList)
-        .put(dataOps.saveOrUpdateEntry)
-        .post(dataOps.saveOrUpdateEntry);
+        .post(dataOps.saveEntry);
 
 router.route('/data/:id')
         .get(dataOps.getDetailsbyId)
-        .delete(dataOps.deleteEntryById);
+        .delete(dataOps.deleteEntryById)
+        .put(dataOps.updateEntry);
 
 module.exports = router;
