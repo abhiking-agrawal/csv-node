@@ -1,17 +1,30 @@
 const Movie = require('../model/movie.js');
 const csv = require('csvtojson'),
-    async = require("async");
+    async = require("async"),
+    multer  = require('multer')
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './data')
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'test.csv')
+    }
+})
 
+var upload = multer({ storage: storage }).single('file')
 /**
  * File Upload file 
  */
 var fileUpload = function (req, res, next) {
-    if (req && (!req.files || !req.files.file || req.files.file.size == 0)) {
+    upload(req, res, function (err) {
+
+
+    if (req && (!req.file || req.file.size == 0)) {
         return res.status(500).json({ message: "Please provide proper file." })
     }
     csv()
-        .fromFile(req.files.file.path)
+        .fromFile("./data/test.csv")
         .then((jsonObj) => {
             console.log(jsonObj.length)
             req.body.fileData = jsonObj;
@@ -22,7 +35,7 @@ var fileUpload = function (req, res, next) {
             }
             //
         })
-
+    })
 
 };
 module.exports.fileUpload = fileUpload;
