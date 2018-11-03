@@ -64,7 +64,7 @@ var updateEntry = function (req, res) {
     if (req && (!req.params || !req.params.id)) {
         return res.status(500).json({ message: "Please provide proper input" });
     }
-    Movie.update({_id : req.params.id},
+    Movie.updateOne({_id : req.params.id},
         {
             "Release Year": req.body["Release Year"],
             "Title": req.body["Title"],
