@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{record.name}}</h2>
+
+
+<mat-dialog-content >
+  <form class="full-width">
+    <mat-form-field class="full-width">
+      <input [readonly]="isReadOnly" matInput placeholder="Title" [(ngModel)]="record.Title" name="title">
+    </mat-form-field>
+
+    <div>
+      <div class="half-width">
+          <mat-form-field >
+              <input [readonly]="isReadOnly" matInput placeholder="Release Year" [(ngModel)]="record['Release Year']" name="releaseyear">
+            </mat-form-field>
+      </div>
+      <div class="half-width">
+          <mat-form-field >
+              <input [readonly]="isReadOnly" matInput placeholder="Origin" [(ngModel)]="record['Origin/Ethnicity']" name="origin">
+            </mat-form-field>
+      </div>
+    </div>
+
+    <div>
+        <div class="half-width">
+            <mat-form-field >
+                <input [readonly]="isReadOnly" matInput placeholder="Director" [(ngModel)]="record.Director" name="director">
+              </mat-form-field>
+        </div>
+        <div class="half-width">
+            <mat-form-field >
+                <input [readonly]="isReadOnly" matInput placeholder="Genre" [(ngModel)]="record.Genre" name="genre">
+              </mat-form-field>
+        </div>
+      </div>
+
+    <mat-form-field class="full-width">
+      <input [readonly]="isReadOnly" matInput placeholder="Cast" [(ngModel)]="record.Cast" name="cast">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input [readonly]="isReadOnly" matInput placeholder="Wiki" [(ngModel)]="record['Wiki Page']" name="wiki">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+          <textarea [readonly]="isReadOnly" matInput placeholder="Plot" [(ngModel)]="record.Plot" name="plot"></textarea>
+        </mat-form-field>
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button class="mat-raised-button mat-accent" (click)="close()">
+    Close
+  </button>
+
+  <button class="mat-raised-button mat-primary" (click)="save()" *ngIf="!isReadOnly">
+    Save
+  </button>
+
+</mat-dialog-actions>

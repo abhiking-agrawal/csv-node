@@ -1,0 +1,37 @@
+.main-container{
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+.description-cell {
+    text-align: left;
+    margin: 10px auto;
+}
+
+.duration-cell {
+    text-align: center;
+}
+
+.duration-cell mat-icon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.lessons-table {
+    margin-top: 10px;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.mat-cell {
+    font-size: 15px;
+}
+
+.spinner-container mat-spinner {
+    margin: 130px auto 0 auto;
+}
+  

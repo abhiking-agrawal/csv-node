@@ -1,0 +1,59 @@
+<div class="main-container">
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<mat-table matSort class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+  
+  <ng-container matColumnDef="releaseDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Release Year</mat-header-cell>
+      <mat-cell *matCellDef="let record">{{record['Release Year']}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell class="description-cell"
+                *matCellDef="let record">{{record.Title}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="origin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Origin/Ethnicity</mat-header-cell>
+      <mat-cell class="duration-cell"
+                *matCellDef="let record">{{record['Origin/Ethnicity']}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="director">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Director</mat-header-cell>
+    <mat-cell class="duration-cell"
+              *matCellDef="let record">{{record.Director}}</mat-cell>
+</ng-container>
+<ng-container matColumnDef="genre">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Genre</mat-header-cell>
+  <mat-cell class="duration-cell"
+            *matCellDef="let record">{{record.Genre}}</mat-cell>
+</ng-container>
+<ng-container matColumnDef="action">
+  <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+  <mat-cell class="duration-cell"*matCellDef="let record">
+      <div class="example-button-row">
+      <button mat-icon-button (click)="viewRecord(record._id)" color="primary">
+        <mat-icon aria-label="View Record">remove_red_eye</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editRecord(record._id)" color="accent">
+        <mat-icon aria-label="Edit Record">create</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteRecord(record._id)" color="danger">
+        <mat-icon aria-label="Delete Record">delete_forever</mat-icon>
+      </button>
+    </div>
+  </mat-cell>
+</ng-container>
+  
+<mat-header-row *matHeaderRowDef="displayedColumns sticky:true;"></mat-header-row> 
+  
+<mat-row style="justify-content: center;" *matRowDef="let row; columns: displayedColumns"></mat-row>
+  
+</mat-table>
+<mat-paginator [length]="dataSource?.length"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+</div>

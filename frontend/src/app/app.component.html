@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">Angular CSV</span>
+  <span class="fill-remaining-space"></span>
+  <span class="button-row">
+      <button mat-icon-button [routerLink]="['/home']">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-icon-button [routerLink]="['/upload']">
+          <mat-icon>cloud_upload</mat-icon>
+          <span>Upload CSV</span>
+        </button>
+      </span>
+</mat-toolbar>
+<router-outlet></router-outlet>
